@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>feedback-notes</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./public/css/feedback-notes.css">
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li class="list-group-item list-group-item-success">写下你的留言~</li>
+        </ul>
+    </header>
+    <section>
+        <form action="http://localhost:5000/feedback-notes/commit" method="post" target="blank_iframe"
+         enctype="application/x-www-form-urlencoded">
+            <div class="form-group">
+                <label for="Input1">用户昵称：</label>
+                <input name="author" type="text" class="form-control" id="Input1" placeholder="@请输入你的昵称：" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="Textarea1">留言信息：</label>
+                <textarea name="text" class="form-control " id="Textarea1" rows="6" required></textarea>
+            </div>
+            <button type="submit" onclick="getCallBack()" class="btn btn-success">提交留言</button>
+        </form>
+        <iframe id="id_iframe" name="blank_iframe" style="display: none"></iframe>
+    </section>
+    <script>
+        function getCallBack(){
+            let id = setInterval(function () {
+                let iframe = document.getElementById('id_iframe').contentWindow.document;
+                if (iframe.body.innerText === 'success') {
+                    //data为传过来的数据，可做进一步处理
+                    alert('留言成功~！');
+                    location.pathname = '/feedback' ;
+                    clearInterval(id);
+                } else {
+                    console.log('暂无内容');
+                }
+            }, 100)
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 20px 10px 20px;
+}
+
+section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+ul {
+    padding: 0;
+    font-size: 24px;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #c3e6cb!important;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(195, 230, 203)!important;
+}
+
+button {
+    display: block!important;
+    margin: 0 auto;
+    opacity: 0.8;
+}

@@ -1,0 +1,58 @@
+header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 20px 10px 20px;
+}
+
+section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+ul {
+    margin-top: 15px;
+}
+
+ul li:first-child {
+    list-style: none;
+    font-size: 20px;
+}
+
+li div {
+    display: inline-block;
+}
+
+li div>span {
+    color: #155724;
+    font-size: 15px;
+    font-weight: bold
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    opacity: 0.8;
+}
+
+.time {
+    float: right;
+    color: #727272;
+    font-size: 14px;
+}
+.delete{
+    float: right;
+    position: relative;
+    top:-10px;
+    height: 10px;
+    font-size: 24px;
+    border: none;
+    outline: none !important;
+    background-color: transparent;
+    color: #155724;
+}
+.delete:hover{
+    opacity: 0.6;
+}
