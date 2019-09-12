@@ -35,9 +35,15 @@ server.on('request', (request, response) => {
         }).then(data => {
             response.setHeader("Content-Type", "text/html;charset=utf-8");
             response.end(data);
+            return data
+        }).then(htmlStr => {
+            //将渲染后的html储存到index.html
+            fs.writeFile('../index.html', htmlStr, (err) => {
+                if (err) throw new Error('重写index.html出错：' + err);
+            })
         }).catch(err => console.error(err))
 
-    } else if (request.url === '/feedback/notes') {
+    } else if (request.url === '/feedback-notes') {
         //跳转至写留言页面
         fs.readFile('../views/feedback-notes.html', (err, data) => {
             if (err) return response.end('Cant Open File...');
@@ -111,15 +117,15 @@ const createTimestamp = (notesArr) => {
     let now = + new Date();
     notesArr.forEach(note => {
         let oneDay = 24 * 60 * 60 * 1000;
+        let t = new Date(note.createTime);
         if (now - note.createTime > 7 * oneDay) {
-            let t = new Date(note.creatTime);
-            note['timeTag'] = t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate()
+            note['timeTag'] = t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate() + ' ' + t.getHours() + ':' + t.getMinutes();
         } else if (now - note.createTime > 3 * oneDay) {
-            note['timeTag'] = '三天前'
+            note['timeTag'] = '三天前' + ' ' + t.getHours() + ':' + t.getMinutes()
         } else if (now - note.createTime > 2 * oneDay) {
-            note['timeTag'] = '前天'
+            note['timeTag'] = '前天' + ' ' + t.getHours() + ':' + t.getMinutes()
         } else if (now - note.createTime > oneDay) {
-            note['timeTag'] = '昨天'
+            note['timeTag'] = '昨天' + ' ' + t.getHours() + ':' + t.getMinutes()
         } else if (now - note.createTime > oneDay / 24) {
             note['timeTag'] = Math.floor((now - note.createTime) / (oneDay / 24)) + '小时前';
         } else if (now - note.createTime > 60 * 1000) {

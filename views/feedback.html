@@ -11,10 +11,10 @@
 
 <body>
     <header>
-        <h1>feedback留言板 <span class="badge badge-secondary">dl</span></h1>
+        <h1>feedback留言板 <span class="badge badge-secondary">点滴爱葵</span></h1>
     </header>
     <section>
-        <button type="button" class="btn btn-success" onclick="window.location.pathname = '/feedback/notes'">跳转去留言</button>
+        <button type="button" class="btn btn-success" onclick="window.location.pathname = '/feedback-notes'">跳转去留言</button>
         <ul class="list-group">
             <li class="list-group-item list-group-item-success">dl社区留言板，欢迎留言~</li>
             {{ each notes }}
@@ -25,7 +25,7 @@
                 <button class="delete" onclick="deleteMsg(this)">×</button>
                 <span class="time">{{ $value.timeTag }}</span>
                 <div>
-                    <p>{{ $value.text }}</p>
+                    {{ $value.text }}
                 </div>
             </li>
             {{ /each }}
