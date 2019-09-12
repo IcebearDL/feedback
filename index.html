@@ -11,19 +11,52 @@
 
 <body>
     <header>
-        <h1>feedback留言板 <span class="badge badge-secondary">dl</span></h1>
+        <h1>feedback留言板 <span class="badge badge-secondary">点滴爱葵</span></h1>
     </header>
     <section>
-        <button type="button" class="btn btn-success" onclick="window.location.pathname = '/feedback-notes'">跳转去留言</button>
+        <button type="button" class="btn btn-success" onclick="window.location.pathname = '/feedback-notes'" title="暂时还不能点噢~" disabled>跳转去留言</button>
         <ul class="list-group">
             <li class="list-group-item list-group-item-success">dl社区留言板，欢迎留言~</li>
+            
+            <li class="list-group-item">
+                <div>
+                    <span>@</span><span>洗澡良 :</span>
+                </div>
+                <button class="delete" onclick="deleteMsg(this)">×</button>
+                <span class="time">刚刚</span>
+                <div>
+                    我要变香香了，臭猪~！
+                </div>
+            </li>
+            
+            <li class="list-group-item">
+                <div>
+                    <span>@</span><span>邓良跟你说晚安！ :</span>
+                </div>
+                <button class="delete" onclick="deleteMsg(this)">×</button>
+                <span class="time">1分钟前</span>
+                <div>
+                    我先去洗个澡啦！，你睡觉的时候跟我说哦~~，爱葵噢
+                </div>
+            </li>
+            
+            <li class="list-group-item">
+                <div>
+                    <span>@</span><span>嘻嘻我可爱吧 :</span>
+                </div>
+                <button class="delete" onclick="deleteMsg(this)">×</button>
+                <span class="time">3分钟前</span>
+                <div>
+                    我们要一直热恋噢~~~我超可爱，葵开心，我就开心噢~~
+                </div>
+            </li>
             
             <li class="list-group-item">
                 <div>
                     <span>@</span><span>我是猫南北，你是狗东西吗？^_^ :</span>
                 </div>
                 <button class="delete" onclick="deleteMsg(this)">×</button>
-                <span class="time">11分钟前</span>
+                <span class="time">28分钟前</span>
                 <div>
                     现在是中秋前一天晚上，终于把留言板初版做了一下，虽然只读，不能葵写，我会改进的……^_^，嘻嘻；
 爱葵是我，我是爱葵，今日总结：不小心把葵聊天记录给搞没了，55555我的错啦，我会把它找回来的；还有葵要好好学习，经济学课好好学，双学位也要加油噢，我也要加油！；今天室友解放了保研了，我也要加油，这是一个漫长的努力的过程，要一起学习努力呀！！！希望明天要早点起来学习了嘿嘿
@@ -35,7 +68,7 @@
                     <span>@</span><span>是葵就是葵 :</span>
                 </div>
                 <button class="delete" onclick="deleteMsg(this)">×</button>
-                <span class="time">43分钟前</span>
+                <span class="time">59分钟前</span>
                 <div>
                     是葵，就是葵，我们的葵葵~，小胖子~
 爱葵噢~，中秋节快乐噢~
