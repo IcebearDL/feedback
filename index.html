@@ -13,6 +13,7 @@
 
         section {
             perspective: 300px;
+            -webkit-perspective: 300px;
             display: inline-block;
         }
 
@@ -22,19 +23,23 @@
             width: 150px;
             padding: 5px;
             animation: turnAround 0.5s linear infinite;
+            -webkit-animation: turnAround 0.5s linear infinite;
         }
 
         div:hover {
-            animation-play-state: paused
+            animation-play-state: paused;
+            -webkit-animation-play-state: paused
         }
 
         @keyframes turnAround {
             from {
-                transform: rotate3d(0, 0, 0, 0)
+                transform: rotate3d(0, 0, 0, 0);
+                -webkit-transform: rotate3d(0, 0, 0, 0)
             }
 
             to {
-                transform: rotate3d(0, -1, 0, 360deg)
+                transform: rotate3d(0, -1, 0, 360deg);
+                -webkit-transform: rotate3d(0, -1, 0, 360deg)
             }
         }
 
@@ -49,7 +54,9 @@
             position: relative;
             top: -150px;
             transform: rotate3d(0, -1, 0, 180deg);
-            transform-style: preserve-3d
+            -webkit-transform: rotate3d(0, -1, 0, 180deg);
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d
         }
     </style>
 </head>
