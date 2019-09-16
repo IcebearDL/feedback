@@ -21,6 +21,17 @@
             
             <li class="list-group-item">
                 <div>
+                    <span>@</span><span>今天是要跟葵过100辈子小邓 :</span>
+                </div>
+                <button class="delete" onclick="deleteMsg(this)">×</button>
+                <span class="time" data-time="1568612643385"></span>
+                <div>
+                    不不不不！！！！！！一百辈子短了，永远过下去，葵竟然嫌和我过两辈子就很长，hing！我生气了，这个女人怎么可以这样，我多么爱葵啊~~~~
+                </div>
+            </li>
+            
+            <li class="list-group-item">
+                <div>
                     <span>@</span><span>今天是救援队小邓 :</span>
                 </div>
                 <button class="delete" onclick="deleteMsg(this)">×</button>
@@ -168,7 +179,7 @@
             if (now - t.getTime() > 7 * oneDay) {
                 element.innerText = t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate() + ' ' + t.getHours() + ':' + t.getMinutes();
             } else if (now - t.getTime() > 3 * oneDay) {
-                element.innerText = '三天前' + ' ' + t.getHours() + ':' + t.getMinutes()
+                element.innerText = Math.floor((now - t.getTime()) / oneDay) + '天前' + ' ' + t.getHours() + ':' + t.getMinutes()
             } else if (now - t.getTime() > 2 * oneDay) {
                 element.innerText = '前天' + ' ' + t.getHours() + ':' + t.getMinutes()
             } else if (now - t.getTime() > oneDay) {
