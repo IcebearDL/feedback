@@ -14,7 +14,8 @@
         <h1>feedback留言板 <span class="badge badge-secondary">点滴爱葵</span></h1>
     </header>
     <section>
-        <button type="button" class="btn btn-success" onclick="window.location.pathname = '/feedback-notes'" _disabled>跳转去留言</button>
+        <button type="button" class="btn btn-success" onclick="window.location.pathname = '/feedback-notes'"
+            _disabled>跳转去留言</button>
         <ul class="list-group">
             <li class="list-group-item list-group-item-success">dl社区留言板，欢迎留言~</li>
             {{ each notes }}
@@ -23,7 +24,7 @@
                     <span>@</span><span>{{ $value.author }} :</span>
                 </div>
                 <button class="delete" onclick="deleteMsg(this)">×</button>
-                <span class="time">{{ $value.timeTag }}</span>
+                <span class="time" data-time="{{ $value.createTime }}"></span>
                 <div>
                     {{ $value.text }}
                 </div>
@@ -32,9 +33,31 @@
         </ul>
     </section>
     <script>
-        function deleteMsg(e){
+        function deleteMsg(e) {
             e.parentNode.remove();
         }
+        Array.from(document.getElementsByClassName('time')).forEach(element => {
+            let now = + new Date();
+            let oneDay = 24 * 60 * 60 * 1000;
+            //用new中只能设置是数字类型
+            let t = new Date(parseInt(element.dataset.time));
+            console.log(t)
+            if (now - t.getTime() > 7 * oneDay) {
+                element.innerText = t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate() + ' ' + t.getHours() + ':' + t.getMinutes();
+            } else if (now - t.getTime() > 3 * oneDay) {
+                element.innerText = Math.floor((now - t.getTime()) / oneDay) + '天前' + ' ' + t.getHours() + ':' + t.getMinutes()
+            } else if (now - t.getTime() > 2 * oneDay) {
+                element.innerText = '前天' + ' ' + t.getHours() + ':' + t.getMinutes()
+            } else if (now - t.getTime() > oneDay) {
+                element.innerText = '昨天' + ' ' + t.getHours() + ':' + t.getMinutes()
+            } else if (now - t.getTime() > oneDay / 24) {
+                element.innerText = Math.floor((now - t.getTime()) / (oneDay / 24)) + '小时前';
+            } else if (now - t.getTime() > 60 * 1000) {
+                element.innerText = Math.floor((now - t.getTime()) / (60 * 1000)) + '分钟前'
+            } else {
+                element.innerText = '刚刚'
+            }
+        })
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
